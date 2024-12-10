@@ -1,5 +1,11 @@
 import { getMovies, addMovie } from "./local-storage";
-import { renderMovie, renderDefaultMovies, loadGenres } from "./dom-helpers";
+import {
+  renderMovie,
+  renderDefaultMovies,
+  loadGenres,
+  appendToMoviesList,
+  prependToMoviesList,
+} from "./dom-helpers";
 import { drawCharts, reDrawCharts } from "./charts";
 
 const getMoviesFormData = (formInformation) => {
@@ -16,7 +22,7 @@ const getMoviesFormData = (formInformation) => {
 const loadMovies = () => {
   const movies = getMovies();
   movies.forEach((movie) => {
-    renderMovie(movie);
+    appendToMoviesList(renderMovie(movie));
   });
 };
 
@@ -24,7 +30,7 @@ const handleSubmit = (event) => {
   event.preventDefault();
   const movieInformation = getMoviesFormData(event);
   //Renders the movie in HTML
-  renderMovie(movieInformation);
+  prependToMoviesList(renderMovie(movieInformation));
   //Adds to Local Storage
   addMovie(movieInformation);
   //Redraw Charts
@@ -33,10 +39,15 @@ const handleSubmit = (event) => {
 };
 
 const main = () => {
-  if (!getMovies()) renderDefaultMovies();
-  loadGenres();
-  loadMovies();
-  drawCharts();
+  if (!getMovies()) {
+    //List
+    renderDefaultMovies();
+  } else {
+    // Charts
+    loadGenres();
+    loadMovies();
+    drawCharts();
+  }
   //Adding event listener to the movie form. Listen to submit.
   document
     .querySelector("#movie-form")

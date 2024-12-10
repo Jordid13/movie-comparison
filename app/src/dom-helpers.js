@@ -25,9 +25,14 @@ const getMoviesList = () => {
   return document.querySelector("#movies-list");
 };
 
-const addToMoviesList = (movieCard) => {
+const appendToMoviesList = (movieCard) => {
   const movieList = getMoviesList();
   movieList.append(movieCard);
+};
+
+const prependToMoviesList = (movieCard) => {
+  const movieList = getMoviesList();
+  movieList.prepend(movieCard);
 };
 
 const renderMovie = (movie) => {
@@ -46,7 +51,6 @@ const renderMovie = (movie) => {
   //Domestic Total
   const domesticTotal = document.createElement("p");
   domesticTotal.textContent = `Domestic Total: ${toUSCurrency(movie.domestic)}`;
-  //Note toLocaleStringMethod is not optimal as it has to search through a huge database to get the formatting for the number
 
   //Genre
   const movieGenre = document.createElement("p");
@@ -65,13 +69,14 @@ const renderMovie = (movie) => {
   );
 
   //Appending the card with the information to the ul (movie-list)
-  addToMoviesList(movieCard);
+  return movieCard;
 };
 
 const renderDefaultMovies = () => {
+  // Clean
   getMoviesList().innerHTML = "";
   defaultMovieData.forEach((movie) => {
-    renderMovie(movie);
+    appendToMoviesList(renderMovie(movie));
   });
   // Resets local storage to store the default movies
   resetMoviesToDefault();
@@ -79,4 +84,10 @@ const renderDefaultMovies = () => {
   reDrawCharts();
 };
 
-export { renderMovie, renderDefaultMovies, loadGenres };
+export {
+  renderMovie,
+  renderDefaultMovies,
+  loadGenres,
+  prependToMoviesList,
+  appendToMoviesList,
+};

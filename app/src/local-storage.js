@@ -31,7 +31,7 @@ const addMovie = (newMovie) => {
   // Grab the movies data object from local storage
   const movies = getMovies();
   // Update
-  movies.push(newMovie);
+  movies.unshift(newMovie);
   // Replace local storage with updated movies
   replaceMoviesData(movies);
 };

@@ -1,17 +1,21 @@
 {
   "name": "app",
+  "homepage": "https://jordid13.github.io/movie-comparison/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "vite": "^5.4.10"
   },
   "dependencies": {
-    "chart.js": "^4.4.7"
+    "chart.js": "^4.4.7",
+    "gh-pages": "^6.2.0"
   }
 }

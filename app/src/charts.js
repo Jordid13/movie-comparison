@@ -44,6 +44,20 @@ const getTitleForDomesticsData = () => {
     }
   });
   //Sorting
+  return object;
+};
+
+const getSortedTitleForDomesticData = () => {
+  const movieData = getMovies();
+  const object = {};
+  movieData.forEach((movie) => {
+    if (object[movie["title"]]) {
+      object[movie["title"]] += Number(movie["domestic"]);
+    } else {
+      object[movie["title"]] = Number(movie["domestic"]);
+    }
+  });
+  //Sorting
   return Object.fromEntries(
     Object.entries(object).sort(([, a], [, b]) => b - a)
   );
@@ -98,11 +112,11 @@ const domesticBoxOfficeChart = () => {
   const canvas = document.getElementById("domestic-box-office");
   // Chart Data
   const data = {
-    labels: Object.keys(getTitleForDomesticsData()),
+    labels: Object.keys(getSortedTitleForDomesticData()),
     datasets: [
       {
         label: "Domestic Gross",
-        data: Object.values(getTitleForDomesticsData()),
+        data: Object.values(getSortedTitleForDomesticData()),
         borderWidth: 1,
       },
     ],
