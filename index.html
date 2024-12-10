@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Lexend+Deca:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Movie Comparison</title>
+    <script type="module" crossorigin src="/movie-comparison/assets/index-D_feTTL3.js"></script>
+    <link rel="stylesheet" crossorigin href="/movie-comparison/assets/index-BuZuWo2Q.css">
+  </head>
+  <body>
+    <main>
+      <h1>2023's Top Domestic Movies</h1>
+      <section id="movies-section">
+        <h2>Movies</h2>
+        <div id="movies-section-wrapper">
+          <form
+          id="movie-form"
+          name="add-movie"
+          aria-label="Form to add a movie"
+          >
+          <label id="form-label" for="movie-form">Add Your Movie</label>
+          <div id="movies-form-wrapper">
+              <!-- Movie Title Field -->
+              <div class="form-input">
+                <label for="movie-title">Movie Title</label>
+                <input
+                  type="text"
+                  id="movie-title"
+                  name="movie-title"
+                  required
+                />
+              </div>
+              <!-- Critic Score Field -->
+              <div class="form-input">
+                <label for="critic-score">Critic Score</label>
+                <input
+                  type="number"
+                  id="critic-score"
+                  name="critic-score"
+                  min="1"
+                  max="100"
+                  required
+                  />
+                </div>
+                <!-- Audience Score Field -->
+                <div class="form-input">
+                  <label for="audience-score">Audience Score</label>
+                  <input
+                  type="number"
+                  id="audience-score"
+                  name="audience-score"
+                  min="1"
+                  max="100"
+                  required
+                  />
+                </div>
+                <!-- Domestic Gross Sales -->
+                <div class="form-input">
+                  <label for="movie-gross-sales">Domestic Gross Sales</label>
+                  <input
+                  type="number"
+                  id="movie-gross-sales"
+                  name="movie-gross-sales"
+                  min="1"
+                  required
+                />
+              </div>
+              <!-- Genre -->
+              <div class="form-input">
+                <label for="movie-genre">Movie Genre</label>
+                <select name="movie-genre" id="movie-genre" required>
+                  <!-- Default Option -->
+                  <option value="" disabled selected hidden>
+                    Select a Genre
+                  </option>
+                  <!-- Options go here -->
+                </select>
+              </div>
+              <button type="submit" aria-label="Add a movie">Add Movie</button>
+            </form>
+          </div>
+          <div id="movies">
+            <ul id="movies-list">
+              <!-- Movies go in here :) -->
+            </ul>
+            <button
+              id="reset-movies"
+              type="button"
+              aria-label="Reset to default movies"
+            >
+              Go Back To Default Movies
+            </button>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Domestic Box Office</h2>
+        <div class="chart-wrapper"></div>
+      </section>
+      <section>
+        <h2>Genres and Total gross</h2>
+        <div class="chart-wrapper"></div>
+      </section>
+      <section>
+        <h2>Critic vs Audience Score</h2>
+        <div class="chart-wrapper"></div>
+      </section>
+    </main>
+  </body>
+</html>
